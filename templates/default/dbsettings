@@ -1,0 +1,27 @@
+param_startsession
+param_put SessionTimeout <%= @dbParam_sessionTimeout %>
+param_put CacheMemorySize <%= @dbParam_cacheMemorySize %>
+param_put MaxDataVolumes <%= @dbParam_maxDataVolumes %>
+param_put MaxUserTasks <%= @dbParam_maxUserTasks %>
+param_put DefaultCodePage <%= @dbParam_defaultCodePage %>
+param_put MaxSQLLocks <%= @dbParam_maxSQLLocks %>
+param_put MaxServerTasks <%= @dbParam_maxServerTasks %>
+param_put JoinTableBufferSize <%= @dbParam_joinTableBufferSize %>
+param_put JoinSearchLevel <%= @dbParam_joinSearchLevel %>
+param_put MaxTransactions <%= @dbParam_maxTransactions %>
+param_put MaxCPUs <%= @dbParam_maxCPUs %>
+param_put MaxLogVolumes <%= @dbParam_maxLogVolumes %>
+param_put UseSharedSQL <%= @dbParam_useSharedSQL %>
+param_put UseAlternateAllocatorForServer <%= @dbParam_useAlternateAllocatorForServer %>
+param_checkall
+param_commitsession
+param_addvolume 1 DATA <%= @volPath %>/DISKD0001 F 32768
+param_addvolume 1 LOG DISKL0001 F 6400
+db_admin
+db_activate <%= @dbUserName %>,<%= @dbUserPassword %>
+load_systab
+auto_update_statistics <%= @dbParam_autoUpdateStatistics %>
+auto_recreate_bad_index  <%= @dbParam_autoRecreateBadIndex %>
+auto_extend <%= @dbParam_autoExtends %> <%= @dbParam_autoExtendsPercentage %>
+autolog_<%= @dbParam_autoLogBackup %>
+db_execute SET LOG AUTO OVERWRITE <%= @dbParam_logOverwrite %>

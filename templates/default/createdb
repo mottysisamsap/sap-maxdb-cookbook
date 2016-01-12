@@ -1,0 +1,5 @@
+db_create <%= @dbName %> <%= @dbmOperatorName %>,<%= @dbmOperatorPassword %>
+param_startsession
+param_init OLTP
+param_checkall
+param_commitsession
